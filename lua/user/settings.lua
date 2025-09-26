@@ -13,6 +13,7 @@ settings["neovide_config"] = {
     cursor_trail_size = 0.4,
     cursor_animation_length = 0.1,
     cursor_antialiasing = true,
+    input_macos_option_key_is_meta = "both",
     cursor_animate_in_insert_mode = false,
     cursor_animate_command_line = false,
 }
