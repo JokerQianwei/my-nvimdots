@@ -115,6 +115,17 @@ _G._toggle_copilot = function()
 	end
 end
 
+-- Smart colon in insert mode: if next char is ')', jump over it then insert ':'
+_G._smart_colon = function()
+	local col = vim.fn.col(".")
+	local line = vim.fn.getline(".")
+	local next_char = line:sub(col, col)
+	if next_char == ")" then
+		return require("keymap.bind").escape_termcode("<Right>:")
+	end
+	return ":"
+end
+
 local _lazygit = nil
 _G._toggle_lazygit = function()
 	if vim.fn.executable("lazygit") == 1 then
