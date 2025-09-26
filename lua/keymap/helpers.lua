@@ -65,6 +65,56 @@ _G._toggle_virtuallines = function()
 	)
 end
 
+-- Toggle Copilot as a completion source in nvim-cmp
+_G._toggle_copilot = function()
+	local ok_cmp, cmp = pcall(require, "cmp")
+	if not ok_cmp then
+		local ok_lazy, lazy = pcall(require, "lazy")
+		if ok_lazy then
+			pcall(lazy.load, { plugins = { "nvim-cmp", "copilot.lua", "copilot-cmp" } })
+			ok_cmp, cmp = pcall(require, "cmp")
+		end
+	end
+
+	if not ok_cmp then
+		vim.notify(
+			"nvim-cmp 尚未加载，请进入插入模式后再试",
+			vim.log.levels.WARN,
+			{ title = "Copilot Toggle" }
+		)
+		return
+	end
+
+	local cfg = cmp.get_config()
+	local had = false
+	for _, s in ipairs(cfg.sources or {}) do
+		if s.name == "copilot" then
+			had = true
+			break
+		end
+	end
+
+	-- remove all existing copilot entries first
+	local filtered = {}
+	for _, s in ipairs(cfg.sources or {}) do
+		if s.name ~= "copilot" then
+			table.insert(filtered, s)
+		end
+	end
+
+	if had then
+		cmp.setup({ sources = filtered })
+		vim.g._copilot_cmp_enabled = false
+		vim.notify("已关闭 Copilot 补全源", vim.log.levels.INFO, { title = "Copilot" })
+	else
+		-- append copilot at the end to keep priority reasonable
+		table.insert(filtered, { name = "copilot" })
+		cmp.setup({ sources = filtered })
+		vim.g._copilot_cmp_enabled = true
+		vim.notify("已开启 Copilot 补全源", vim.log.levels.INFO, { title = "Copilot" })
+	end
+end
+
 local _lazygit = nil
 _G._toggle_lazygit = function()
 	if vim.fn.executable("lazygit") == 1 then

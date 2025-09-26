@@ -96,6 +96,7 @@ go： 打开代码的大纲
 - Treesitter 文本对象：`af/if` 函数、`ac/ic` 类块，配合 `[[`, `]]` 等跳转
 
 ## 4. LSP 与补全链路
+<leader>lc : 开启/关闭 coplit
 
 ### 4.1 自动安装与启用
 

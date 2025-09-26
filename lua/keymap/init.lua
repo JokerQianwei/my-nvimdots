@@ -31,6 +31,12 @@ local mappings = {
 			:with_nowait()
 			:with_desc("package: Restore"),
 		["n|<leader>px"] = map_cr("Lazy clean"):with_silent():with_noremap():with_nowait():with_desc("package: Clean"),
+
+		-- Toggle Copilot completion source (nvim-cmp)
+		["n|<leader>lc"] = map_cr("lua _toggle_copilot()")
+			:with_silent()
+			:with_noremap()
+			:with_desc("lsp: Toggle Copilot"),
 	},
 }
 
