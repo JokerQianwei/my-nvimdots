@@ -2,6 +2,30 @@
 
 > 本指南基于当前仓库的 nvimdots 配置（入口 `init.lua`），按“先开箱、后进阶、自定义最后”的节奏帮助你掌握主要特性与快捷键。
 
+- github 链接： `https://github.com/ayamir/nvimdots?tab=readme-ov-file`
+- 按下<leader>ps, 同步所有插件
+- 插件的安装路径： `~/.local/share/nvim/site/lazy`
+- 配置文件路径：`~/.config/nvim`
+- 配置自定义映射路径： `/Users/joker/.config/nvim/lua/user/keymap/core.lua`
+- 需要把终端字体改为Nerd Font字体
+
+<C-h> 和 <C-l>: 切换窗口
+<C-w>v : split 一个垂直窗口
+<C-w>s : split 一个水平窗口
+
+<leader>li: check LSP info
+
+go： 打开代码的大纲
+
+- <leader>ff: 搜索文件
+  - 然后可以使用 <Tab> 和 <shift + Tab> 在已经打开的标签页中预览
+- <leader>fp: 搜索文本 patterns
+- <leader>fd: 访问最近的文件列表
+- LSP 提示的适合，可以使用 <Tab>, <S-Tab>来导航；<C-w>关闭提示窗口
+
+<C-p> 查看快捷键
+
+
 ## 1. 快速上手
 
 ### 1.1 启动与基础概念
