@@ -15,6 +15,8 @@
 
 <leader>li: check LSP info
 
+插件同步： `:Lazy sync`
+
 go： 打开代码的大纲
 
 - <leader>ff: 搜索文件
@@ -25,6 +27,13 @@ go： 打开代码的大纲
 
 <C-p> 查看快捷键
 
+## 0. 如何在新的环境中配置
+- Ubuntu：
+  - 安装依赖：`sudo apt install -y neovim git curl unzip ripgrep fd-find build-essential python3-pip python3-venv`nodejs npm fzf
+  - 软链 `fd：ln -sf $(command -v fdfind) ~/.local/bin/fd`
+  - 克隆到 ~/.config/nvim：`git clone https://github.com/JokerQianwei/my-nvimdots.git ~/.config/nvim`
+  - 同步与检查：`nvim --headless "+Lazy! sync" "+TSUpdate" "+checkhealth" +qa`
+  - 打开 nvim 验证 LSP/格式化/快捷键等
 
 ## 1. 快速上手
 
